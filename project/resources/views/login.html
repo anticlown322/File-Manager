@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="{theme}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{title}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="{styles-login}">
+</head>
+<body>
+
+<form class="card" action="{action-login}" method="post">
+    <h2>Login</h2>
+
+    {error}
+
+    <label for="name">
+        Name
+        <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Cluwne"
+                value="{name-old-value}"
+                {aria-value}
+        />
+        {name-error}
+    </label>
+
+    <label for="password">
+        Password
+        <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="******"
+        >
+    </label>
+
+    <button
+            type="submit"
+            id="submit"
+    >Continue
+    </button>
+</form>
+
+<p>I don't have an <a href="{registration-page}">account</a> yet</p>
+</body>
+</html>
