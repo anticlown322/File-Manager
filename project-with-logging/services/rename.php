@@ -1,6 +1,8 @@
 <?php
 
-$homePagePath = '..' . DIRECTORY_SEPARATOR . 'index.php';
+require_once 'helpers.php';
+
+$homePagePath = '..' . DIRECTORY_SEPARATOR . 'home.php';
 
 if (isset($_GET['file'])) {
     $filename = '..' . DIRECTORY_SEPARATOR . $_GET['file'];

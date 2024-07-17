@@ -5,7 +5,7 @@ require_once '../classes/Model.php';
 use classes\Model;
 
 $model = new Model();
-$homePagePath = '..' . DIRECTORY_SEPARATOR . 'index.php';
+$homePagePath = '..' . DIRECTORY_SEPARATOR . 'home.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["fileToUpload"])) {
     $uploaded = true;
@@ -25,3 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["fileToUpload"])) {
         echo "Error during file upload.";
     }
 }
+
+

@@ -30,7 +30,7 @@ class View
     private function getMainForm(): string
     {
         //layout generation
-        $header = $this->templateEngine->render('header.html', []);
+        $header = $this->templateEngine->render('header.html', ['logout-action' => 'services/logout.php']);
         $footer = $this->templateEngine->render('footer.html', []);
 
         return $this->generateMainForm($header, $footer);
@@ -39,7 +39,7 @@ class View
     public function getRenameForm(): string
     {
         //layout generation
-        $header = $this->templateEngine->render('header.html', []);
+        $header = $this->templateEngine->render('header.html', ['logout-action' => 'services/logout.php']);
         $footer = $this->templateEngine->render('footer.html', []);
 
         //form generation
@@ -92,6 +92,69 @@ class View
                 'current-dir' => $this->model->current_directory,
                 'content' => $content,
                 'footer' => $footer
+            ]
+        );
+    }
+
+    public function generateLoginForm(): string
+    {
+        $errorStr = '';
+        if (hasMessage('error'))
+            $errorStr = "<div class='notice error'>" . getMessage('error') . "</div>";
+
+        $oldName = old('name');
+
+        $nameErrorStr='';
+        if(hasValidationError('name'))
+            $nameErrorStr = "<small>" . validationErrorMessage('name') . "</small>";
+
+        $ariaValue = validationErrorAttr('name');
+
+        return $this->templateEngine->render(
+            'login.html',
+            [
+                'theme' => 'dark',
+                'title' => 'Welcome to Anticlown File Storage',
+                'styles-login' => 'resources/styles/login.css',
+                'action-login' => 'services/login.php',
+                'error' => $errorStr,
+                'name-old-value' => $oldName,
+                'name-error' => $nameErrorStr,
+                'aria-value' => $ariaValue,
+                'registration-page' => 'register.php'
+            ]
+        );
+    }
+
+    public function generateRegistrationForm(): string
+    {
+        $oldName = old('name');
+
+        $nameErrorStr='';
+        if(hasValidationError('name'))
+            $nameErrorStr = "<small>" . validationErrorMessage('name') . "</small>";
+
+        $nameAriaValue = validationErrorAttr('name');
+
+        $passwordErrorStr='';
+        if(hasValidationError('password'))
+            $passwordErrorStr = "<small>" . validationErrorMessage('password') . "</small>";
+
+        $passwordAriaValue = validationErrorAttr('name');
+
+        return $this->templateEngine->render(
+            'register.html',
+            [
+                'theme' => 'dark',
+                'title' => 'Registration',
+                'styles-login' => 'resources' . DIRECTORY_SEPARATOR . 'styles' . DIRECTORY_SEPARATOR . 'login.css',
+                'action-register' => 'services' . DIRECTORY_SEPARATOR . 'register.php',
+                'old-name-value' => $oldName,
+                'name-error' => $nameErrorStr,
+                'name-aria-value' => $nameAriaValue,
+                'password-error' => $passwordErrorStr,
+                'password-aria-value' => $passwordAriaValue,
+                'login-page' => 'index.php'
             ]
         );
     }

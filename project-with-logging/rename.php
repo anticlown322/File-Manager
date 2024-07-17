@@ -13,4 +13,4 @@ $model = new Model();
 $controller = new Controller($model);
 $view = new View($model, $controller);
 
-echo $view->getNewPage();
+echo $view->getRenameForm();

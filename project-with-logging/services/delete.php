@@ -5,7 +5,7 @@ require_once '../classes/Model.php';
 use classes\Model;
 
 $model = new Model();
-$homePagePath = '..' . DIRECTORY_SEPARATOR . 'index.php';
+$homePagePath = '..' . DIRECTORY_SEPARATOR . 'home.php';
 
 if (isset($_GET['file'])) {
     $filename = '..' . DIRECTORY_SEPARATOR . $_GET['file'];
